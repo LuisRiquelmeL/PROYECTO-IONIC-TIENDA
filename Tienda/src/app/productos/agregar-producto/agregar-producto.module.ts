@@ -8,6 +8,7 @@ import { AgregarProductoPageRoutingModule } from './agregar-producto-routing.mod
 
 import { AgregarProductoPage } from './agregar-producto.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
