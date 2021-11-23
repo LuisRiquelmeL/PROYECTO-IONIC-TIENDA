@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="testeo">productos | Bienvenido {{usuario}}</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+
+
+<ion-content class="fondoprod">
+
+  
+
+  <ion-list >
+    <!--LLAMANDO EL ELEMENTO CON UN FOR DE CICLO-->
+    <!--routerLink es un redireccional = url = vinculo-->
+    <!--la vaiable P = productos -->
+
+    <ion-item class="testeo" *ngFor="let p of productos"[routerLink]="['/productos', p.id]"> 
+      <ion-avatar slot="start">
+        <ion-img [src]="p.imagenURL"></ion-img>
+      </ion-avatar>
+      <ion-label>{{ p.nombre }}</ion-label>
+
+      <!--<ion-icon name="create-outline"></ion-icon> -->
+      
+      
+
+    </ion-item>
+  </ion-list>
+
+  <!--BOTON AGREGAR-->
+    <!-- fab placed to the top end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="warning" (click)="redireccionarAgregar()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button color="warning" (click)="redireccionarLogin()">
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+</ion-content>

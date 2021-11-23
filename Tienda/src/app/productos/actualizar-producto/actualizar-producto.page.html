@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <!--boton volver-->
+    <ion-buttons slot="start">
+      <ion-back-button color = "warning" defaultHref="productos"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="warning">Actualizar figura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo">
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-input type="text" [(ngModel)]="datos.nombre" #nombre ></ion-input>
+          <ion-input type="text" [(ngModel)]="datos.imagenURL" #imagenURL></ion-input>
+          <ion-input type="text" [(ngModel)]="datos.comentarios"#comentarios ></ion-input>
+          <ion-input type="number" [(ngModel)]="datos.precios" #precios></ion-input>
+          <ion-input type="number" [(ngModel)]="datos.stock" #stock></ion-input>
+          <ion-button color="warning" (click)="actualizarProducto(nombre,imagenURL,comentarios,precios,stock)"> Actualizar</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+
+    </ion-col>
+
+
+  </ion-row>
+
+</ion-content>

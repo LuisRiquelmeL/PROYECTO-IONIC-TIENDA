@@ -1,0 +1,32 @@
+<ion-content class="fondo">
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row >
+        <ion-col  class="testeo">
+          <h3 class="ion-text-center">Bienvenido</h3>
+
+              <ion-col style="text-align:center">
+                <h1> </h1>
+                <ion-input name="usuario" type="text" placeholder="Nombre de usuario (*)" ngModel required></ion-input>
+                <h1> </h1>
+                <ion-input name="contrasenia" type="password" placeholder="Contraseña (*)" ngModel required></ion-input>
+                <h2> </h2>
+                <ion-button color="warning" size="large" expand="block" fill="solid" type="submit" [disabled]="form.invalid" >LOGIN</ion-button>
+              </ion-col>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  <ion-col  class="testeo2">
+    <div class="ion-text-center"> 
+      <h7> </h7>
+      <h7> </h7>
+          Collection Store 2021 ®      
+          <div> </div>
+          Todos los derechos reservados
+
+    </div>
+  </ion-col>
+
+  </form>
+</ion-content>

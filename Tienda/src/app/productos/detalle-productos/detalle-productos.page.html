@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color = "light">
+  <ion-button color = "warning" slot = "start">
+    <ion-back-button ></ion-back-button>
+  </ion-button>
+  <ion-title class="testeo">{{datos.nombre}}</ion-title>
+  
+
+  
+  <!--BOTON ELIMINAR-->
+  <ion-button color = "warning" (click) = "eliminar()" slot = "end">
+    <ion-icon name="trash-outline"></ion-icon>
+  </ion-button>
+
+   <!--BOTON EDITAR-->
+   <ion-button color = "warning" (click) = "editarProducto()" slot = "end">
+    <ion-icon name="create-outline"></ion-icon>
+  </ion-button>
+
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!--creamos una grilla para las imagenes-->
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="datos.imagenURL"></ion-img>
+      </ion-col>
+    </ion-row>
+
+
+    <!--nombre del objeto-->
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <h1 class="ion-text-center">Nombre : {{datos.nombre}}</h1>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+
+    <!--comentarios-->
+    <ion-row>
+      <ion-col><h4>     Información :</h4>
+        <ion-list >
+          <!--com = variable comentario-->
+          <ion-item>
+               {{datos.comentarios ? datos.comentarios : "sin comentarios"}}
+          </ion-item>
+        </ion-list>
+
+        <!--ngTemplates : es un segemento de codigo que aparece bajo una condicion-->
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+           <!--{{ 345.76 | currency: 'EUR' }}-->
+          <h1 class="ion-tex-center">    Precio : {{ datos.precios | currency : 'CLP'}} </h1>
+        </ion-list>
+       
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <h3 class="ion-tex-center">    Stock : {{ datos.stock}} </h3>
+        </ion-list>
+        <!--{{ 345.76 | currency: 'EUR' }}-->
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>
