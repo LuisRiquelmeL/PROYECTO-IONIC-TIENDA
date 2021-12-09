@@ -30,11 +30,11 @@ export class AgregarProductoPage implements OnInit {
   }
 
   //metodo para agregar
-  agregarProducto(nombre,imagenURL,comentarios,precios,stock){
+  agregarProducto(nombre,imagenURL,comentarios,precios,stock,combo,check){
 
 
 
-    this.productoServicio.addProductos(nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value).subscribe(
+    this.productoServicio.addProductos(nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value,combo.value,check.checked).subscribe(
       (respuesta) => {
         console.log("agrego ? : 0" + respuesta)
         this.router.navigate(['/productos'])

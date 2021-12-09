@@ -28,14 +28,16 @@ export class ProductosService {
   //nomb , imgURL son parametros que creamos nosotros, totalmente distinto a lo otro
   //agregamos un producto nuevo a la lista
   //el id corresponde al ultimo elemento registrado +1
-  addProductos(nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number ){
+  addProductos(nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number, categorias : string, check : boolean ){
 
     var datos = {
       "nombre" : nombre,
       "imagenURL" : imagenURL,
       "comentarios" : comentarios,
       "precios" : precios,
-      "stock" : stock
+      "stock" : stock,
+      "categorias" : categorias,
+      "check" : check
       
     }
     return this.http.post('http://localhost:1337/Productos/', datos )
@@ -60,14 +62,16 @@ export class ProductosService {
   
 
   //actualizar productos
-  updateProductos(productoId: string,nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number){
+  updateProductos(productoId: string, nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number, Genero : string, check : boolean){
 
     var datos = {
       "nombre" : nombre,
       "imagenURL" : imagenURL,
       "comentarios" : comentarios,
       "precios" : precios,
-      "stock" : stock
+      "stock" : stock,
+      "categorias" : Genero,
+      "check" : check
     }
 
     return this.http.put('http://localhost:1337/Productos/'+ productoId, datos)

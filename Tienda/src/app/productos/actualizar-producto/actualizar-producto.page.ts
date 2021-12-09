@@ -3,6 +3,8 @@ import { ActivatedRoute , Router} from '@angular/router'
 import { ProductosService} from '../productos.service'
 
 
+//OJO
+import { TipoProductoService } from 'src/app/tipoProducto/tipo-producto.service';
 
 
 @Component({
@@ -16,8 +18,10 @@ export class ActualizarProductoPage implements OnInit {
   //y ademas tenemos el servicio para llamar al metodo por id
   private datos : any = [];
   private idproducto;
+
+  private listadoCategorias : any =[];
   
-  constructor(private activatedRouter : ActivatedRoute ,private router: Router, private productoServicio: ProductosService ) { }
+  constructor(private activatedRouter : ActivatedRoute ,private router: Router, private productoServicio: ProductosService, private tipoProductoServicio: TipoProductoService ) { }
 
   ngOnInit() {
 
@@ -32,17 +36,28 @@ export class ActualizarProductoPage implements OnInit {
             (error) => { console.log(error)}
           )
           
-        })
+        }),
+
+        this.tipoProductoServicio.getTipoProducto().subscribe(
+          (respuesta) =>{
+            this.listadoCategorias = respuesta
+    
+          },
+          (error) => {
+            console.log("error al cargar el listado de tipo de productos")
+          }
+        )
         
   }
+
 
                 
   //ACTUALIZAR PRODUCTO
   //revisar si es comentario o comentarios
-  actualizarProducto(nombre,imagenURL,comentarios,precios,stock){
+  actualizarProducto(nombre,imagenURL,comentarios,precios,stock,Genero,check){
     
     //llamar al servicio y enviar los datos capturados
-    this.productoServicio.updateProductos(this.idproducto,nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value).subscribe(
+    this.productoServicio.updateProductos(this.idproducto,nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value,Genero.value,check.checked).subscribe(
           (respuesta) =>{
             //accion en caso de actualizar
             this.router.navigate(['/productos'])

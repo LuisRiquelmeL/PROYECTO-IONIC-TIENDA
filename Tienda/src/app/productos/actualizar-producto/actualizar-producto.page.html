@@ -18,7 +18,29 @@
           <ion-input type="text" [(ngModel)]="datos.comentarios"#comentarios ></ion-input>
           <ion-input type="number" [(ngModel)]="datos.precios" #precios></ion-input>
           <ion-input type="number" [(ngModel)]="datos.stock" #stock></ion-input>
-          <ion-button color="warning" (click)="actualizarProducto(nombre,imagenURL,comentarios,precios,stock)"> Actualizar</ion-button>
+          
+
+
+          <ion-select [(ngModel)]="datos.categorias" #combo placeholder="Seleccione tipo de producto" interface="popover">
+            <ion-select-option *ngFor= "let l of listadoCategorias" [value] = "l.Genero" > {{l.Genero}} </ion-select-option>
+
+          </ion-select>
+
+
+
+
+
+          <ion-label>          
+            Incluye partes intercambiable
+
+          <ion-checkbox [(ngModel)]="datos.check" #check></ion-checkbox>
+          </ion-label>
+
+        
+
+
+
+          <ion-button color="warning" (click)="actualizarProducto(nombre,imagenURL,comentarios,precios,stock,combo,check)"> Actualizar</ion-button>
         </ion-card-content>
       </ion-card>
 
