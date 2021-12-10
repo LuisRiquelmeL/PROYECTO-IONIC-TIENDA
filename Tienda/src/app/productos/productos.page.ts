@@ -10,6 +10,7 @@ import {Router} from '@angular/router';//enrutar
 })
 export class ProductosPage implements OnInit {
 
+  private url;
   private productos : any = []
   usuario = localStorage.getItem("datosUsuario")
 
@@ -20,8 +21,10 @@ export class ProductosPage implements OnInit {
   ngOnInit() {
     //recuperar todos los productos
     this.servicioProductos.getProductos().subscribe(
-      (respuesta) =>{
+      (respuesta : any) =>{
          this.productos = respuesta
+         this.url = respuesta.imagen[0].url
+         localStorage.setItem("ultimoID", this.productos[this.productos.length-1].id + 1)
          console.log(respuesta)},
       (error) => { console.log(error)}
     )
@@ -31,6 +34,7 @@ export class ProductosPage implements OnInit {
     this.servicioProductos.getProductos().subscribe(
       (respuesta) =>{
         this.productos = respuesta
+        localStorage.setItem("ultimoID", this.productos[this.productos.length-1].id + 1)
         console.log(respuesta)},
       (error) => { console.log(error)}
     )

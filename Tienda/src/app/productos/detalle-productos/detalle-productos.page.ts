@@ -14,6 +14,7 @@ export class DetalleProductosPage implements OnInit {
 
   private datos : any = [];
   private idproducto;
+  private  url;
 
   //el activatedRoute más claro es solo una variable creada por nosotros,puede tener cualquier nombre
   //creamos una variable para capturar la URL activa
@@ -35,6 +36,7 @@ export class DetalleProductosPage implements OnInit {
       this.productoServicio.getProductosById(valor).subscribe(
         (respuesta : any) =>{
           this.datos = respuesta
+          this.url = respuesta.imagen.url
            console.log(respuesta)},
         (error) => { console.log(error)}
       )

@@ -54,10 +54,10 @@ export class ActualizarProductoPage implements OnInit {
                 
   //ACTUALIZAR PRODUCTO
   //revisar si es comentario o comentarios
-  actualizarProducto(nombre,imagenURL,comentarios,precios,stock,Genero,check){
+  actualizarProducto(nombre,comentarios,precios,stock,Genero,check){
     
     //llamar al servicio y enviar los datos capturados
-    this.productoServicio.updateProductos(this.idproducto,nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value,Genero.value,check.checked).subscribe(
+    this.productoServicio.updateProductos(this.idproducto,nombre.value,comentarios.value,precios.value,stock.value,Genero.value,check.checked).subscribe(
           (respuesta) =>{
             //accion en caso de actualizar
             this.router.navigate(['/productos'])

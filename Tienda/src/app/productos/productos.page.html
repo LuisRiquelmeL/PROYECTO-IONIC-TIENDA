@@ -18,7 +18,7 @@
 
     <ion-item class="testeo" *ngFor="let p of productos"[routerLink]="['/productos', p.id]"> 
       <ion-avatar slot="start">
-        <ion-img [src]="p.imagenURL"></ion-img>
+        <ion-img [src]="'http://localhost:1337' +  p.imagen.url "></ion-img>
       </ion-avatar>
       <ion-label>{{ p.nombre }}</ion-label>
 

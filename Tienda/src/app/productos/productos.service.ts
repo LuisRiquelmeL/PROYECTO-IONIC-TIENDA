@@ -28,11 +28,10 @@ export class ProductosService {
   //nomb , imgURL son parametros que creamos nosotros, totalmente distinto a lo otro
   //agregamos un producto nuevo a la lista
   //el id corresponde al ultimo elemento registrado +1
-  addProductos(nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number, categorias : string, check : boolean ){
+  addProductos(nombre : string, comentarios : string, precios : number, stock : number, categorias : string, check : boolean ){
 
     var datos = {
       "nombre" : nombre,
-      "imagenURL" : imagenURL,
       "comentarios" : comentarios,
       "precios" : precios,
       "stock" : stock,
@@ -62,11 +61,10 @@ export class ProductosService {
   
 
   //actualizar productos
-  updateProductos(productoId: string, nombre : string, imagenURL : string, comentarios : string, precios : number, stock : number, Genero : string, check : boolean){
+  updateProductos(productoId: string, nombre : string,comentarios : string, precios : number, stock : number, Genero : string, check : boolean){
 
     var datos = {
       "nombre" : nombre,
-      "imagenURL" : imagenURL,
       "comentarios" : comentarios,
       "precios" : precios,
       "stock" : stock,

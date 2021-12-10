@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosService } from '../productos.service';
 import { TipoProductoService } from 'src/app/tipoProducto/tipo-producto.service';
+declare var require: any
 
 @Component({
   selector: 'app-agregar-producto',
@@ -11,6 +12,7 @@ import { TipoProductoService } from 'src/app/tipoProducto/tipo-producto.service'
 export class AgregarProductoPage implements OnInit {
 
   listado : any = []
+  private archivo: File = null
 
   constructor(private productoServicio:ProductosService,
               private router : Router,
@@ -28,15 +30,32 @@ export class AgregarProductoPage implements OnInit {
       }
     )
   }
+  capturarImagen(event){
+    //capturamos la imagen en una variable
+    this.archivo =<File>event.target.files[0]
+
+  }
 
   //metodo para agregar
-  agregarProducto(nombre,imagenURL,comentarios,precios,stock,combo,check){
+  agregarProducto(nombre,comentarios,precios,stock,combo,check){
+
+    const axios = require('axios')
+
+    const STRAPI_BASE_URL = 'http://localhost:1337'
+
+    const datos = new FormData()
+    datos.append('files', this.archivo)
+    datos.append('ref', 'Producto')
+    datos.append('refId', localStorage.getItem("ultimoID"))
+    datos.append('field', 'imagen')
+
+    axios.post(`${STRAPI_BASE_URL}/upload`, datos)
 
 
-
-    this.productoServicio.addProductos(nombre.value,imagenURL.value,comentarios.value,precios.value,stock.value,combo.value,check.checked).subscribe(
+    this.productoServicio.addProductos(nombre.value,comentarios.value,precios.value,stock.value,combo.value,check.checked).subscribe(
       (respuesta) => {
         console.log("agrego ? : 0" + respuesta)
+        this.listado = respuesta
         this.router.navigate(['/productos'])
       },
       (error) => {
